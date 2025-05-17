@@ -1,0 +1,14 @@
+[
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 273,
+                "origin_hash": "a13943ac0c4b3b1ef6523e4cb4915e89"
+            }
+        ],
+        "target_uinput": "keyboard + mouse",
+        "output_symbol": "hold(key(BTN_LEFT).wait(60))",
+        "mapping_type": "key_macro"
+    }
+]
