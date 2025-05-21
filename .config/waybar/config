@@ -1,9 +1,9 @@
 {
     "layer": "bottom", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 40,
+    "height": 30,
     "mod": "dock",
-    "width":1940,
+    "width":1920,
     "margin": "0 0 0 0",
     "spacing":0,
 
@@ -65,14 +65,14 @@
         "on-click": "~/.config/waybar/scripts/OCV",
     },
     "cpu": {
-        "format": "CPU: {usage}%",
+        "format": "󰍛  {usage}%",
 	"interval": 1,
-        "on-click": "foot -e htop"
+        "on-click": "gnome-system-monitor"
     },
     "memory": {
-        "format": "RAM: {: >3}%",
+        "format": "󰘚 {: >3}%",
 	"interval": 1,	
-        "on-click": "foot -e htop"
+        "on-click": "gnome-system-monitor"
     },
     "temperature": {
         "thermal-zone": 7,  // Check with: # cat /sys/class/hwmon/hwmon*/temp1_input
@@ -130,7 +130,7 @@
    },
     "custom/power": {
       	"format":"⏻",
-       	"on-click": "nwgbar",
+       	"on-click": "bash ~/scripts/powermenu.sh",
       	"tooltip": false,
    },
    "custom/keyboard-layout": {
