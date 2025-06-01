@@ -64,7 +64,7 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 2px 0px;
+    padding: 5px 5px;
     border-bottom: 2px;
     color: #eceff4;
     border-color: #d8dee9;
@@ -91,6 +91,10 @@ window#waybar {
  * Module styles
  * -------------------------------------------------------------------------- */
 
+tooltip {
+     border-radius: 4px;
+     background-color: #000000;
+}
 
 #clock {
  color:#a3be8c;
@@ -138,7 +142,7 @@ window#waybar {
 }
 
 #network{
-    color:#a3be8c;
+    color:#d08770;
 }
 
 #network.disconnected {

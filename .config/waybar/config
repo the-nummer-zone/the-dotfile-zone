@@ -4,6 +4,7 @@
     "height": 30,
     "mod": "dock",
     "width":1920,
+    "output": ["DP-1","HDMI-A-1"],
     "margin": "0 0 0 0",
     "spacing":0,
 
@@ -11,8 +12,8 @@
     // Add according to your wishes: "custom/weather"
 
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["custom/network_traffic"],
-    "modules-right": ["custom/updates", "cpu", "memory", "temperature", "pulseaudio", "tray", "clock","custom/power"],
+    "modules-center": ["network"],
+    "modules-right": ["custom/updates","cpu","memory","temperature","pulseaudio","tray", "clock","custom/power"],
 
  // Modules configuration
 
@@ -35,8 +36,6 @@
       "focused": "",
       "default": ""
     },
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
     },
     "hyprland/window": {
         "format": "{}",
@@ -106,13 +105,14 @@
       "network": {
         //"interface": "wlp0s20f3", // (Optional) To force the use of this interface  "format-wifi": "  {essid}",
         "format": "⚠Disabled",
-        "format-wifi": "",
-        "format-ethernet": "",
+        "format-wifi": "⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
+        "format-ethernet": "⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "⚠Disabled",
         "family": "ipv4",
         "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
         "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+        "interval": 1,
         //"min-length": 2,
         //"max-length": 2,
         "on-click": "nm-connection-editor"
@@ -126,12 +126,12 @@
        },
        "exec-if": "which waybar-module-pacman-updates",
        "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 7200 --network-interval-seconds",
-       "on-click": "foot -e update"
+       "on-click": "alacritty -e sudo pacman -Syu"
    },
     "custom/power": {
       	"format":"⏻",
        	"on-click": "bash ~/scripts/powermenu.sh",
-      	"tooltip": false,
+      	"tooltip-format": "Power menu"
    },
    "custom/keyboard-layout": {
       	"format": " ", // Icon: keyboard
@@ -146,10 +146,20 @@
              "exec": "~/.config/waybar/scripts/network_traffic.sh",
              "return-type": "json",
              "format-ethernet": "{icon} {ifname} ⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",    // optional
-},
+	},
+    "mpris": {
+ 	"format": "{status_icon} {artist} - {title} ({length})",
+        "dynamic-len": 40,
+	"status-icons": {
+		"playing": "▶️",
+		"paused": "⏸︎",
+		"stopped": ""
+	},
+	"dynamic-order": ["title", "artist"],
+    },
     "pulseaudio": {
-        "scroll-step": 2, // %, can be a float
-        "format": "{icon}  {volume}% {format_source}",
+        "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}% {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
@@ -166,13 +176,12 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "footclient -T waybar_alsamixer -e alsamixer -M",
-        "on-click-right": "pavucontrol"
+        "on-click": "pavucontrol",
         },
         // https://github.com/chubin/wttr.in
         "custom/weather": {
-        "exec": "curl 'https://wttr.in/Essen?format=2'",
+        "exec": "curl 'https://wttr.in/Edmonton?format=1'",
         "interval": 900,
-	    "on-click": "yad --html --uri='https://wttr.in/Essen' --center --fixed --width=1000 --height=680 --timeout=60 --timeout-indicator=right"
+	    "on-click": "yad --html --uri='https://wttr.in/Edmonton' --center --fixed --width=1000 --height=700 --timeout=60 --timeout-indicator=right"
         },
     }
