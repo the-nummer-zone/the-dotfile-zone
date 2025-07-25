@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-op=$( echo -e "  Power off\n󱍷  Reboot\n Suspend\n  Lock" | wofi -s ~/.config/wofi/pmstyle.css -c ~/.config/wofi/pmconfig --dmenu --width 300 --height 150 | awk '{print tolower($2)}' )
+op=$( echo -e " Power off\n󱍷  Reboot\n Suspend\n  Lock\n Logout" | wofi -s ~/.config/wofi/pmstyle.css -c ~/.config/wofi/pmconfig --dmenu --width 300 --height 180 | awk '{print tolower($2)}' )
 
 case $op in 
   poweroff)
@@ -14,5 +14,8 @@ case $op in
     ;;
   lock)
     hyprlock
+    ;;
+  logout)
+    hyprctl dispatch exit
     ;;
 esac
