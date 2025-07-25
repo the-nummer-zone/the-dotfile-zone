@@ -31,6 +31,7 @@ nord11 #bf616a
 nord12 #d08770
 nord13 #ebcb8b
 nord14 #a3be8c
+	   #9B98B7
 nord15 #b48ead
 */
 
@@ -40,17 +41,13 @@ nord15 #b48ead
 
 /* Reset all styles */
 
-#hyprland-workspaces {
-    margin-right: 5px;
-    margin-left: 5px;
-}
 
 * {
     color: #eceff4;
     border: 0;
     border-radius: 0;
     padding: 0 0;
-    font-family:Sans;
+    font-family: Sans;
     font-size: 15px;
     margin-right: 0px;
     margin-left: 0px;
@@ -63,28 +60,48 @@ window#waybar {
     border-radius: 0px 0px 0px 0px;
 }
 
+
 #workspaces button {
-    padding: 5px 5px;
-    border-bottom: 2px;
-    color: #eceff4;
-    border-color: #d8dee9;
-    border-style: solid;
-    margin-top:2px;
-    margin-right: 5px;
-    margin-left: 5px;
+  all: initial;
+  /* Remove GTK theme values (waybar #1351) */
+  min-width: 0;
+  /* Fix weird spacing in materia (waybar #450) */
+  box-shadow: inset 0 -3px transparent;
+  /* Use box-shadow instead of border so the text isn't offset */
+  padding: 0px 6px;
+  margin: 3px 3px;
+  color: #777777;
+  font-weight: 500;
 }
 
 #workspaces button.active {
-    border-color: #81a1c1;
-    
+  color: #ffffff;
+  font-weight: 800;
 }
 
-#clock, #battery, #cpu, #memory,#idle_inhibitor, #temperature,#custom-keyboard-layout, #backlight, #network, #pulseaudio, #tray, #window,#custom-launcher,#custom-updates ,#custom-network_traffic,#custom-weather{
-    padding: 0 3px;
-    border-bottom: 2px;
+#workspace {
+  all: initial;
+  /* Remove GTK theme values (waybar #1351) */
+  min-width: 0;
+  /* Fix weird spacing in materia (waybar #450) */
+  box-shadow: inset 0 -3px transparent;
+  /* Use box-shadow instead of border so the text isn't offset */
+  color: #111111;
+  font-weight: 500;
+}
+
+
+#clock, #battery, #cpu, #memory, #disk, #idle_inhibitor, #temperature,#custom-keyboard-layout, #backlight, #network, #pulseaudio, #tray, #window, #custom-notification, #custom-launcher,#custom-updates ,#custom-network_traffic,#custom-weather{
+    padding: 3px 3px;
     border-style: solid;
     margin-right: 5px;
-    margin-left: 5px;
+    margin-left: 2px;
+    padding-left: 2px;
+    padding-right: 5px;
+    border-radius: 4px;
+/*
+    background-color: #1e1e2e
+*/
 }
 
 /* -----------------------------------------------------------------------------
@@ -93,11 +110,13 @@ window#waybar {
 
 tooltip {
      border-radius: 4px;
-     background-color: #000000;
+     background-color:rgba (0,0,0,1);
+     color:#000000;
 }
 
 #clock {
- color:#a3be8c;
+ color:#b48ead;
+ margin-right:0px;
 }
 
 #backlight {
@@ -130,10 +149,14 @@ tooltip {
 }
 
 #cpu {
-    color:#a3be8c ;
+    color:#ebcb8b;
 }
 
 #memory {
+    color: #a3be8c;
+}
+
+#disk {
     color: #d3869b;
 }
 
@@ -142,7 +165,7 @@ tooltip {
 }
 
 #network{
-    color:#d08770;
+    color:#bf616a;
 }
 
 #network.disconnected {
@@ -150,7 +173,7 @@ tooltip {
 }
 
 #pulseaudio {
-    color: #b48ead;
+    color: #81a1c1;
 }
 
 #pulseaudio.muted {
@@ -170,30 +193,42 @@ tooltip {
 }
 
 #tray {
-
+    margin-right:1px;
+    margin-left:2px;
 }
 
-#custom-launcher{
-        font-size: 20px;
-        background-image: url('/home/nummer/Pictures/config/garuda.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        border-style: hidden;
+#custom-wayves {
+ color:#ffffff;
+ font-size: 12px;
+ margin-top: 20px;
+ margin-bottom: 0px;
+ margin-left: 5px;
+}
+
+#custom-notification {
+ color:#ffffff;
+}
+
+#custom-updates {
+ color:#d08770;
 }
 
 #custom-power{
     border-style: hidden;
-    margin-top:2px;
     margin-right:12px;
-    margin-left:6px;
-    margin-bottom:2px;
+    margin-left:0px;
+    margin-top:0px;
+    margin-bottom:1px;
     font-size:24px
+}
+
+#hyprland-workspaces {
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 #window{
     border-style: hidden;
-    margin-top:1px;
     margin-right: 0px;
     margin-left: 0px;
 }
