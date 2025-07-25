@@ -1,0 +1,14 @@
+max-visible=10
+layer=overlay
+font=Sans 10
+width=350
+height=250
+background-color=#000000b2
+text-color=#d8dee9
+border-color=#4c566ab2
+border-radius=2
+max-icon-size=48
+default-timeout=10000
+anchor=top-right
+margin=10
+output=DP-1
